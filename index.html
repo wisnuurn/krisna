@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy 20th Birthday My Love 💖</title>
 
+<!-- FONT IMUT -->
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
 
 <style>
@@ -26,6 +27,15 @@ h1 {
     font-family: 'Pacifico', cursive;
     font-size: 42px;
     color: #ff4da6;
+    animation: floatText 2s ease-in-out infinite;
+}
+
+p {
+    font-size: 18px;
+    color: #ff1493;
+    max-width: 500px;
+    margin: auto;
+    line-height: 1.6;
 }
 
 .photo-frame {
@@ -35,6 +45,8 @@ h1 {
     border-radius: 50%;
     padding: 10px;
     background: linear-gradient(45deg, #ff99cc, #ff66b2);
+    box-shadow: 0 0 25px rgba(255,105,180,0.6);
+    animation: pulse 2s infinite;
 }
 
 .photo-frame img {
@@ -67,6 +79,23 @@ button:hover {
     margin-top: 20px;
     font-size: 20px;
     color: #ff1493;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes floatText {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .heart {
@@ -85,29 +114,28 @@ button:hover {
 
 <body>
 
-<!-- Hidden YouTube Player -->
-<iframe id="musicFrame"
-style="display:none;"
-allow="autoplay; encrypted-media">
-</iframe>
+<!-- AUDIO LOKAL -->
+<audio id="birthdayMusic" src="kitausahakanrumahitu" loop></audio>
 
 <div class="container">
 
 <h1>🎂 Happy 20th Birthday 🎂</h1>
 
 <div class="photo-frame">
-    <img src="foto-dora.jpg" alt="Foto Pacarku">
+    <img src="foto-dora.jpg" alt="Foto Dora">
 </div>
 
 <p>
 Selamat ulang tahun ke-20 sayangku 💖  
-Kita usahakan rumah itu… dan semua masa depan indah di dalamnya 🤍✨
+Kita usahakan rumah itu… dan semua masa depan indah di dalamnya 🤍✨  
+Terima kasih sudah menjadi rumah ternyaman untukku 💕
 </p>
 
 <button id="loveButton" onclick="startLove()">Klik Aku Dong 🥰</button>
 
 <div id="surprise">
-💕 Aku cinta kamu hari ini, besok, dan selamanya 💕
+💕 Aku cinta kamu hari ini, besok, dan selamanya 💕 <br>
+Semoga kita selalu bersama sampai tua nanti 🤍✨
 </div>
 
 </div>
@@ -115,9 +143,8 @@ Kita usahakan rumah itu… dan semua masa depan indah di dalamnya 🤍✨
 <script>
 function startLove() {
 
-    // PLAY LAGU
-    document.getElementById("musicFrame").src =
-        "https://www.youtube.com/embed/7SqNVv98e8Q?autoplay=1&loop=1&playlist=7SqNVv98e8Q";
+    // PLAY AUDIO
+    document.getElementById("birthdayMusic").play();
 
     // TAMPILKAN PESAN
     document.getElementById("surprise").style.display = "block";
@@ -130,12 +157,13 @@ function startLove() {
         "linear-gradient(135deg, #ffb6d9, #ffd6f0, #ff99cc)";
 }
 
-// Floating Hearts
+// FLOATING HEARTS
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
     heart.innerHTML = "💖";
     heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
     document.body.appendChild(heart);
 
     setTimeout(() => heart.remove(), 6000);

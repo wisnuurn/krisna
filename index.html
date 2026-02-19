@@ -114,8 +114,10 @@ button:hover {
 
 <body>
 
-<!-- AUDIO LOKAL -->
-<audio id="birthdayMusic" src="kita-usahakan-rumah-itu.mp3" loop></audio>
+<!-- AUDIO LOKAL FIX -->
+<audio id="birthdayMusic" preload="auto" loop>
+    <source src="./kita-usahakan-rumah-itu.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
 
@@ -126,8 +128,8 @@ button:hover {
 </div>
 
 <p>
-Selamat ulang tahun ke-20 sayangku 💖  
-Kita usahakan rumah itu… dan semua masa depan indah di dalamnya 🤍✨  
+Selamat ulang tahun ke-20 sayangku 💖 <br>
+Kita usahakan rumah itu… dan semua masa depan indah di dalamnya 🤍✨ <br>
 Terima kasih sudah menjadi rumah ternyaman untukku 💕
 </p>
 
@@ -143,16 +145,19 @@ Semoga kita selalu bersama sampai tua nanti 🤍✨
 <script>
 function startLove() {
 
-    // PLAY AUDIO
-    document.getElementById("birthdayMusic").play();
+    const music = document.getElementById("birthdayMusic");
 
-    // TAMPILKAN PESAN
+    music.currentTime = 0;
+
+    music.play().then(() => {
+        console.log("Music started");
+    }).catch(error => {
+        alert("Klik sekali lagi yaa 🥰");
+        console.log(error);
+    });
+
     document.getElementById("surprise").style.display = "block";
-
-    // UBAH TOMBOL
     document.getElementById("loveButton").innerHTML = "Aku Cinta Kamu 💕";
-
-    // UBAH BACKGROUND
     document.body.style.background =
         "linear-gradient(135deg, #ffb6d9, #ffd6f0, #ff99cc)";
 }
@@ -172,6 +177,3 @@ setInterval(() => {
 
 </body>
 </html>
-
-
-

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 20th Birthday My Love 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;800&family=Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Baloo 2', cursive;
+    background: linear-gradient(135deg, #ffcce6, #ffe6f7, #ffd1dc);
+    overflow-x: hidden;
+    text-align: center;
+    transition: 1s;
+}
+
+.container {
+    padding: 30px 20px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 42px;
+    color: #ff4da6;
+    animation: floatText 2s ease-in-out infinite;
+}
+
+h2 {
+    color: #ff66b2;
+}
+
+p {
+    font-size: 18px;
+    color: #ff1493;
+    max-width: 500px;
+    margin: auto;
+    line-height: 1.6;
+}
+
+.photo-frame {
+    margin: 20px auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    padding: 10px;
+    background: linear-gradient(45deg, #ff99cc, #ff66b2);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.6);
+    animation: pulse 2s infinite;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: #ff4da6;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #ff1493;
+}
+
+#surprise {
+    display: none;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff1493;
+    animation: fadeIn 2s ease-in;
+}
+
+@keyframes floatText {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: rise 6s linear infinite;
+}
+
+@keyframes rise {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Hidden YouTube Player -->
+<iframe id="musicFrame" style="display:none;" allow="autoplay"></iframe>
+
+<div class="container">
+
+    <h1>🎂 Happy 20th Birthday 🎂</h1>
+    <h2>Untuk Cintaku Tersayang 💕</h2>
+
+    <div class="photo-frame">
+        <img src="foto-dora.jpg" alt="Foto Pacarku">
+    </div>
+
+    <p>
+        Selamat ulang tahun yang ke-20 sayangkuu 🥺💖  
+        Di umur yang baru ini semoga semua impianmu tercapai ✨  
+        Kita usahakan rumah itu… dan semua masa depan indah di dalamnya 🤍  
+        Terima kasih sudah menjadi rumah ternyaman untukku 💗
+    </p>
+
+    <button id="loveButton" onclick="startLove()">Klik Aku Dong 🥰</button>
+
+    <div id="surprise">
+        💕 Aku cinta kamu hari ini, besok, dan selamanya 💕 <br>
+        Kita usahakan masa depan itu bersama 🤍✨
+    </div>
+
+</div>
+
+<script>
+function startLove() {
+    // Play music
+    document.getElementById("musicFrame").src =
+        "https://www.youtube.com/embed/9u8XfK6vZfM?autoplay=1&loop=1&playlist=9u8XfK6vZfM";
+
+    // Show message
+    document.getElementById("surprise").style.display = "block";
+
+    // Change button text
+    document.getElementById("loveButton").innerHTML = "Aku Cinta Kamu 💕";
+
+    // Change background slightly
+    document.body.style.background =
+        "linear-gradient(135deg, #ffb6d9, #ffd6f0, #ff99cc)";
+}
+
+// Floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 500);
+</script>
+
+</body>
+</html>
